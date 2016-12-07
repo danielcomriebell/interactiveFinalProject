@@ -2,20 +2,39 @@ function vizData () {
   
   this.dataDisplay = function(){
     
-    //create a translucent plane behind the data visualization (from -22 to 30)
+    //create a translucent plane behind the data visualization (from -12 to 40)
+    var plane1 = new Plane({
+                        x:11, y:5, z:-35, 
+            						width:80, height:25, 
+            						red: 150, green: 150, blue: 150,
+            						opacity: .95
+                        });
+                        
+  // add the plane to the world
+  world.add(plane1);
     
     
+    var xVal1 = -12;
     
-    var xVal = -20;
+    //create labels for each column
+    for (var j = 0; j < table.getColumnCount() - 1; j++) {
+      newLabel(xVal1,7,-20);
+      xVal1 += 4;
+    }
     
-    for (var i = 0; i < 12; i++) {
-      newColumn(xVal,-2,-20);
-      xVal += 4;
+    
+    //starting value for the data
+    var xVal2 = -12;
+    
+    //make the columns for all the data (will be individually set for each column in the row)
+    for (var i = 0; i < table.getColumnCount() - 1; i++) {
+      newColumn(xVal2,-2,-20);
+      xVal2 += 4;
     }
     
     //create the label rect for each team
     var label = new Box({
-                      x:0,
+                      x:10,
                       y:10,
                       z:-20,
                       width: 5,
@@ -35,7 +54,7 @@ function vizData () {
   
   //left button
   var leftButton = new Box({
-                      x:-5,
+                      x:5,
                       y:10,
                       z:-20,
                       width: 2,
@@ -53,7 +72,7 @@ function vizData () {
     
    //right button
   var rightButton = new Box({
-                      x:5,
+                      x:15,
                       y:10,
                       z:-20,
                       width: 2,
@@ -85,7 +104,27 @@ function newColumn (x,y,z) {
                       depth: 2,
                       red: 0,
                       green: 0,
-                      blue: 255
+                      blue: 255,
+                      opacity: .7
+                                
+                      });
+
+  // add the entity to the world
+  world.add( box );
+}
+
+function newLabel(x,y,z) {
+   // create a box entity.  entities take arguments in the form of an Object
+  var box = new Box({
+                      x:x,
+                      y:y,
+                      z:z,
+                      width: 2,
+                      height:1.5,
+                      depth: 1,
+                      red: 200,
+                      green: 200,
+                      blue: 200
                                 
                       });
 
