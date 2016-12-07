@@ -1,6 +1,6 @@
 var world;
 var theData;
-
+var thisworking;
 
 //loading sounds and data set
 function preload(){
