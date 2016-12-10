@@ -8,7 +8,11 @@ function Zones() {
   						red:255, green:255, blue:255,
   						opacity: 1,
   						rotationX: -90,
-  						side:'double'
+  						side:'double',
+  						clickFunction: function(moveToZone) {
+  						  //How do you move to this spot, but look up? 
+          			world.teleportToObject(moveToZone);
+			        }
   					});
   	world.add(zone1);
   	
