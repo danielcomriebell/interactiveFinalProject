@@ -1,6 +1,7 @@
 var world;
 var theData;
 var theHoop;
+var zones;
 
 // array to hold our ball throws
 var ballThrows = [];
@@ -52,7 +53,9 @@ function setup() {
 	
 	theHoop = new Hoop();
 	theHoop.displayHoop();
-
+	
+	zones = new Zones();
+	zones.displayZones();
 	
 }
 
