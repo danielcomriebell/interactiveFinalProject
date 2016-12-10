@@ -113,10 +113,7 @@ function BallThrow() {
     y:0,
     z:-1,
     radius:0.5,
-    red:255,
-    green:0,
-    blue:0,
-    metalness:1.0
+    asset: 'ball'
   });
   // add the sphere to our container
   this.container.addChild(this.ball);
