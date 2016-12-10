@@ -1838,6 +1838,12 @@ function Camera() {
 	this.y = 1;
 	this.z = 5;	
 	this.holder.setAttribute('position', this.x + ' ' + this.y + ' ' + this.z);
+
+  // 2016-12-07	
+	// have the camera keep track of its rotation
+	this.rotationX = 0;
+	this.rotationY = 0;
+	this.rotationZ = 0;
 	
 	// set controls on camera
 	this.holder.setAttribute('look-controls', '');
@@ -1853,6 +1859,12 @@ function Camera() {
 	// register to be notifed when the camera position has been updated
 	var _this = this;
 	this.holder.addEventListener('componentchanged', function (evt) {
+	  if (evt.detail.name == 'rotation') {
+	    _this.rotationX = evt.detail.newData.x;
+	    _this.rotationY = evt.detail.newData.y;
+	    _this.rotationZ = evt.detail.newData.z;
+	  }
+	  
 		if (evt.detail.name === 'position') {
 			_this.x = evt.detail.newData.x;
 			_this.y = evt.detail.newData.y;
