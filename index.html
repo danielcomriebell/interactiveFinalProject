@@ -15,6 +15,10 @@
 		<script language="javascript" type="text/javascript" src="libraries/aframep5.js"></script>
 		<script language="javascript" type="text/javascript" src="libraries/aframep5-experimental.js"></script>
 
+    <!--Text Wrapper-->
+    <script language="javascript" type="text/javascript" src="aframe-text/dist/aframe-bmfont-text-component.js"></script>
+    <script language="javascript" type="text/javascript" src="aframe-text/dist/aframe-bmfont-text-component.min.js"></script>
+    
     <!-- Data visualization columns -->
     <script language="javascript" type="text/javascript" src="dataViz.js"></script>
     
@@ -38,35 +42,115 @@
 	<body>
 
 		<!-- container to hold our VR scene - make sure to give this element an ID of 'VRScene' -->
-	    <a-scene id="VRScene">
+	 <a-scene id="VRScene">
 
-	    	<!--
-		       The 'a-assets' container is used to load in any external artwork you may want to use as "textures" for your objects.
-		       Ensure that this element has an ID of 'VRAssets'
+    	<!--
+	       The 'a-assets' container is used to load in any external artwork you may want to use as "textures" for your objects.
+	       Ensure that this element has an ID of 'VRAssets'
 
-		       Textures can be loaded by creating a new 'a-asset' tag inside of the 'a-assets' container.
-		       When doing this you will need to make sure to give your textures a unique ID -
-		       this will be used by p5 to create new objects.
+	       Textures can be loaded by creating a new 'a-asset' tag inside of the 'a-assets' container.
+	       When doing this you will need to make sure to give your textures a unique ID -
+	       this will be used by p5 to create new objects.
 
-		       Example:
+	       Example:
 
-		       <img id="ITEM_ID_GOES_HERE" src="images/gold_block.png"></asset-item>
-			-->
+	       <img id="ITEM_ID_GOES_HERE" src="images/gold_block.png"></asset-item>
+		-->
 
-			<a-assets id="VRAssets">
+		<a-assets id="VRAssets">
 
+        <a-asset id="helloWorld" bmfont-text="text: Hello World; color: white;"></a-asset>
 
-					<img src="images/court.png" id="court" />
-					<img src="images/sky.jpg" id="sky" />
-		  		<img id="stonebrick" src="images/stonebrick.png"/>
-          <img src="images/net.png" id="net"></a-assets>
-          <img src="images/basketball.png" id="ball"></a-assets>
-          
-			</a-assets>
-      
-			<a-sky src="#sky" color="rgb(255,255,255)"></a-sky>
+				<img src="images/court.png" id="court" />
+				<img src="images/sky.jpg" id="sky" />
+	  		<img id="stonebrick" src="images/stonebrick.png"/>
+        <img src="images/net.png" id="net"/>
+        <img src="images/basketball.png" id="ball"/>
+        
+		</a-assets>
+		
+    
+		<a-sky src="#sky" color="rgb(255,255,255)"></a-sky>
+		
+		<!--Load text for labels-->
+	  <!--wins-->
+		<a-text position="-13 6.75 -19.5"
+		        scale="5 4 4"
+            bmfont-text="text: WIN;
+            color: red;">
+    </a-text>
+    
+    <!--losses-->
+    <a-text position="-9 6.75 -19.5"
+		        scale="5 4 4"
+            bmfont-text="text: LOSS;
+            color: red;">
+    </a-text>
+    
+    <!--percentage-->
+    <a-text position="-5 6.75 -19.5"
+		        scale="5 4 4"
+            bmfont-text="text: PCT;
+            color: red;">
+    </a-text>
+    
+    <!--home-->
+    <a-text position="-1 6.75 -19.5"
+		        scale="5 4 4"
+            bmfont-text="text: HOME;
+            color: red;">
+    </a-text>
+    
+    <!--road-->
+    <a-text position="3 6.75 -19.5"
+		        scale="5 4 4"
+            bmfont-text="text: ROAD;
+            color: red;">
+    </a-text>
+    
+    <!--division-->
+    <a-text position="7 6.75 -19.5"
+		        scale="5 4 4"
+            bmfont-text="text: DIV;
+            color: red;">
+    </a-text>
+    
+    <!--conference-->
+    <a-text position="11 6.75 -19.5"
+		        scale="5 4 4"
+            bmfont-text="text: CONF;
+            color: red;">
+    </a-text>
+    
+    <!--points per game-->
+    <a-text position="15 6.75 -19.5"
+		        scale="5 4 4"
+            bmfont-text="text: PPG;
+            color: red;">
+    </a-text>
+    
+    <!--opp points per game-->
+    <a-text position="18.5 6.75 -19.5"
+		        scale="4 4 4"
+            bmfont-text="text: OPP PPG;
+            color: red;">
+    </a-text>
+    
+    <!--difference-->
+    <a-text position="23 6.75 -19.5"
+		        scale="5 4 4"
+            bmfont-text="text: DIFF;
+            color: red;">
+    </a-text>
+    
+    <!--streak-->
+    <a-text position="27 6.75 -19.5"
+		        scale="5 4 4"
+            bmfont-text="text: STRK;
+            color: red;">
+    </a-text>
 
-	    </a-scene>
+	 </a-scene>
 
 	</body>
 </html>

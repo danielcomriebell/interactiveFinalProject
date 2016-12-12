@@ -1,7 +1,7 @@
 function vizData () {
   
   this.dataDisplay = function(){
-    
+
     //create a translucent plane behind the data visualization (from -12 to 40)
     var plane1 = new Plane({
                         x:11, y:5, z:-35, 
@@ -17,7 +17,7 @@ function vizData () {
     var xVal1 = -12;
     
     //create labels for each column
-    for (var j = 0; j < table.getColumnCount() - 1; j++) {
+    for (var j = 0; j < table.getColumnCount() - 2; j++) {
       newLabel(xVal1,7,-20);
       xVal1 += 4;
     }
@@ -27,7 +27,7 @@ function vizData () {
     var xVal2 = -12;
     
     //make the columns for all the data (will be individually set for each column in the row)
-    for (var i = 0; i < table.getColumnCount() - 1; i++) {
+    for (var i = 0; i < table.getColumnCount() - 2; i++) {
       newColumn(xVal2,-2,-20);
       xVal2 += 4;
     }
@@ -119,9 +119,9 @@ function newLabel(x,y,z) {
                       x:x,
                       y:y,
                       z:z,
-                      width: 2,
+                      width: 3,
                       height:1.5,
-                      depth: 1,
+                      depth: .5,
                       red: 200,
                       green: 200,
                       blue: 200

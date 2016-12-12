@@ -13,7 +13,6 @@ function preload(){
 
 function setup() {
 	noCanvas();
-	
 	// construct the A-Frame world
 	// this function requires a reference to the ID of the 'a-scene' tag in our HTML document
 	world = new World('VRScene');
@@ -61,9 +60,10 @@ function setup() {
 
 
 function draw() {
-	if (mouseIsPressed || touchIsDown) {
-		world.moveUserForward(0.1);
-	}
+// 	if (mouseIsPressed || touchIsDown) {
+// 		world.moveUserForward(0.1);
+// 	}
+
 	
 	  // update all ball throw objects
   for (var i = 0; i < ballThrows.length; i++) {
