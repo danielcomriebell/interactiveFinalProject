@@ -60,9 +60,11 @@ function setup() {
 
 
 function draw() {
-// 	if (mouseIsPressed || touchIsDown) {
-// 		world.moveUserForward(0.1);
-// 	}
+  
+
+//	if (mouseIsPressed || touchIsDown) {
+//	world.moveUserForward(0.1);
+//	}
 
 	
 	  // update all ball throw objects
@@ -72,7 +74,7 @@ function draw() {
 }
 
 function keyPressed() {
-  
+
   if (key == 'B') {
     // add a new ball throw
     ballThrows.push( new BallThrow() );
@@ -86,14 +88,13 @@ function BallThrow() {
   this.cameraCurrentPositionY = world.camera.y;
   this.cameraCurrentPositionZ = world.camera.z;
   
-  // grab the camera's current rotation value -- note that this is only possible
-  // with Craig's updated aframep5.js file that was sent to Elif on 12/7/2016
   this.cameraCurrentRotationX = world.camera.rotationX;
   this.cameraCurrentRotationY = world.camera.rotationY;
   this.cameraCurrentRotationZ = world.camera.rotationZ;
   
-  //console.log(this.cameraCurrentPositionX + ", " + this.cameraCurrentPositionY + ", " + this.cameraCurrentPositionZ);
-  
+  console.log("Position" + this.cameraCurrentPositionX + ", " + this.cameraCurrentPositionY + ", " + this.cameraCurrentPositionZ);
+  console.log("Rotation:" + this.cameraCurrentRotationX + ", " + this.cameraCurrentRotationY + ", " + this.cameraCurrentRotationZ);
+
   // create a container object that will hold the ball
   this.container = new Container3D({
     x:this.cameraCurrentPositionX,
@@ -118,11 +119,22 @@ function BallThrow() {
   // add the sphere to our container
   this.container.addChild(this.ball);
   
-  // give the sphere some forward velocity (z)
-  this.ballVelocityZ = -0.4;
+  if (this.cameraCurrentPositionX === -15) {
+    // give the sphere some forward velocity (z)
+    this.ballVelocityZ = -0.3;
   
-  // give the sphere some upward velocity (y)
-  this.ballVelocityY = 0.4;
+    // give the sphere some upward velocity (y)
+    this.ballVelocityY = 0.3;
+  }
+  
+  else if (this.cameraCurrentPositionX === -23) {
+    // give the sphere some forward velocity (z)
+    this.ballVelocityZ = -9;
+  
+    // give the sphere some upward velocity (y)
+    this.ballVelocityY = 0.9;
+  }
+
   
   // a move function to update the position of the ball
   this.move = function() {
