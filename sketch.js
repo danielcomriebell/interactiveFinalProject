@@ -19,17 +19,14 @@ var objArr1 = [];
 
 //loading sounds and data set
 function preload(){
-<<<<<<< Updated upstream
   table = loadTable("data/team_data.csv", "csv", "header");
   
   cheer = loadSound("images/cheer.mp3");
-=======
   table = loadTable("data/gsw.csv", "csv", "header");
   table2 = loadTable("data/okc.csv", "csv", "header");
   table3 = loadTable("data/nyk.csv", "csv", "header");
   table4 = loadTable("data/cc.csv", "csv", "header");
   table5 = loadTable("data/team_data.csv", "csv", "header");
->>>>>>> Stashed changes
 }
 
 function setup() {
@@ -83,9 +80,7 @@ function setup() {
 
 
 function draw() {
-<<<<<<< Updated upstream
-  
-=======
+
   theData = new vizData(state);
 	theData.dataDisplay();
 
@@ -94,7 +89,7 @@ function draw() {
 //	}
 
 	
->>>>>>> Stashed changes
+
 	  // update all ball throw objects
   for (var i = 0; i < ballThrows.length; i++) {
     ballThrows[i].move();
@@ -116,13 +111,13 @@ function keyPressed() {
 
   }
   
-<<<<<<< Updated upstream
+
   if (key == 'C') {
 	world.moveUserForward(1);
 	}
 
 
-=======
+
   if (key == 'Y') {
     if (state < 5) {
       state++;
@@ -131,7 +126,7 @@ function keyPressed() {
     }
     console.log("changing state: " + state);
 }
->>>>>>> Stashed changes
+
 }
 
 
