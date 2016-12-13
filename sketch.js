@@ -64,9 +64,7 @@ function setup() {
 function draw() {
   
 
-//	if (mouseIsPressed || touchIsDown) {
-//	world.moveUserForward(0.1);
-//	}
+
 
 	
 	  // update all ball throw objects
@@ -89,6 +87,12 @@ function keyPressed() {
     console.log(ballThrows)
 
   }
+  
+  if (key == 'C') {
+	world.moveUserForward(1);
+	}
+
+
 }
 
 
@@ -102,8 +106,8 @@ function BallThrow() {
   this.cameraCurrentRotationY = world.camera.rotationY;
   this.cameraCurrentRotationZ = world.camera.rotationZ;
   
-  console.log("Position" + this.cameraCurrentPositionX + ", " + this.cameraCurrentPositionY + ", " + this.cameraCurrentPositionZ);
-  console.log("Rotation:" + this.cameraCurrentRotationX + ", " + this.cameraCurrentRotationY + ", " + this.cameraCurrentRotationZ);
+  //console.log("Position" + this.cameraCurrentPositionX + ", " + this.cameraCurrentPositionY + ", " + this.cameraCurrentPositionZ);
+  //console.log("Rotation:" + this.cameraCurrentRotationX + ", " + this.cameraCurrentRotationY + ", " + this.cameraCurrentRotationZ);
 
   // create a container object that will hold the ball
   this.container = new Container3D({
@@ -141,8 +145,8 @@ function BallThrow() {
   }
   
   else if (this.cameraCurrentPositionX === -19) {
-    this.ballVelocityZ = -.35;
-    this.ballVelocityY = 0.35;
+    this.ballVelocityZ = -.3;
+    this.ballVelocityY = 0.3;
   }
 
   
@@ -154,19 +158,35 @@ function BallThrow() {
     // update Y velocity to simulate gravity
     this.ballVelocityY -= 0.01;
     
-    if (this.ball.y < -30) {
-      this.ballThrown = true;
-    }
-    
-    if ((this.ball.y < -4) && (this.ball.z < -22)) {
-      console.log("success");
-    }
   }
   
   this.checkThrow = function() {
-  //  console.log("x: " + this.ball.x + " y: " + this.ball.y + " z: " + this.ball.z);
-   // console.log("x: " + this.ball.x + " y: " + this.ball.y + " z: " + this.ball.z);
+    //console.log("x: " + this.cameraCurrentRotationX + " y: " + this.cameraCurrentRotationY + " z: " + this.cameraCurrentRotationZ);
+    //console.log("x: " + this.ball.x + " y: " + this.ball.y + " z: " + this.ball.z);
+  
+    //We can now throw away the ball throw  
+    if (this.ball.y < -15) {
+    this.ballThrown = true;
+    }
     
+    //a successful hit from middle
+    if ((this.ball.y < -4 && this.ball.y > -5) && (this.ball.z < -22 && this.ball.z > -23)) {
+      if (this.cameraCurrentRotationX < 7.8 && this.cameraCurrentRotationY < 86 && this.cameraCurrentRotationY > 85) {
+              console.log("success");
+      }
+      
+    //from right
+     else if (this.cameraCurrentRotationX < 9.8 && this.cameraCurrentRotationX > 9 && this.cameraCurrentRotationY < 109 && this.cameraCurrentRotationY > 103) {
+              console.log("success");
+      }
+      
+      else if (this.cameraCurrentRotationX < 9 && this.cameraCurrentRotationX > 7 && this.cameraCurrentRotationY < 66 && this.cameraCurrentRotationY > 61) {
+          console.log("success");
+      }
+    }
+    
+    //a successful hit from left
+
   }
 }
 
