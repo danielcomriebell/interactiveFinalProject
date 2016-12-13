@@ -1,126 +1,50 @@
-function vizData () {
+function vizData (state) {
   
-  this.dataDisplay = function(){
-
-    //create a translucent plane behind the data visualization (from -12 to 40)
-    var plane1 = new Plane({
-                        x:11, y:5, z:-35, 
-            						width:80, height:25, 
-            						red: 150, green: 150, blue: 150,
-            						opacity: .95
-                        });
-                        
-  // add the plane to the world
-  world.add(plane1);
     
     
-    var xVal1 = -12;
+    this.dataDisplay = function(){
+      addingDataBackground();
+      var xVal1 = -12;
+      dataViz(table5);
+      drawBarGraph(state);
     
     //create labels for each column
-    for (var j = 0; j < table.getColumnCount() - 2; j++) {
-      newLabel(xVal1,7,-20);
-      xVal1 += 4;
+      for (var j = 0; j < 7; j++) {
+          newLabel(xVal1,-4,-25);
+          xVal1 += 4;
+      }
     }
     
-    
-    //starting value for the data
-    var xVal2 = -12;
-    
-    //make the columns for all the data (will be individually set for each column in the row)
-    for (var i = 0; i < table.getColumnCount() - 2; i++) {
-      newColumn(xVal2,-2,-20);
-      xVal2 += 4;
+    this.stateDisplay =  function(state){
+      drawBarGraph(state);
     }
-    
-    //create the label rect for each team
-    var label = new Box({
-                      x:10,
-                      y:10,
-                      z:-20,
-                      width: 5,
-                      height: 2,
-                      depth: 2,
-                      red: 255,
-                      green: 255,
-                      blue: 255
-                                
-                      });
-
-  // add the entity to the world
-  world.add( label );
-  
-  
-  //create the up and down buttons for team scroll
-  
-  //left button
-  var leftButton = new Box({
-                      x:5,
-                      y:10,
-                      z:-20,
-                      width: 2,
-                      height: 2,
-                      depth: 2,
-                      red: 255,
-                      green: 0,
-                      blue: 0
-                                
-                      });
-
-  // add the entity to the world
-  world.add( leftButton );
-    
-    
-   //right button
-  var rightButton = new Box({
-                      x:15,
-                      y:10,
-                      z:-20,
-                      width: 2,
-                      height: 2,
-                      depth: 2,
-                      red: 0,
-                      green: 255,
-                      blue: 0
-                                
-                      });
-
-  // add the entity to the world
-  world.add( rightButton );
-  }
-  
-  
 }
 
+function addingDataBackground() {
+  //create a translucent plane behind the data visualization (from -12 to 40)
+  var plane1 = new Plane({
+    x: 0,
+    y: 5,
+    z: -35,
+    width: 50,
+    height: 75,
+    red: 150,
+    green: 150,
+    blue: 150,
+    opacity: .95
+  });
 
-function newColumn (x,y,z) {
-  
-   // create a box entity.  entities take arguments in the form of an Object
-  var box = new Box({
-                      x:x,
-                      y:y,
-                      z:z,
-                      width: 2,
-                      height:5,
-                      depth: 2,
-                      red: 0,
-                      green: 0,
-                      blue: 255,
-                      opacity: .7
-                                
-                      });
-
-  // add the entity to the world
-  world.add( box );
+  // add the plane to the world
+  world.add(plane1);
 }
 
-function newLabel(x,y,z) {
-   // create a box entity.  entities take arguments in the form of an Object
-  var box = new Box({
+function newLabel(x, y, z){
+    var box = new Box({
                       x:x,
                       y:y,
                       z:z,
                       width: 3,
-                      height:1.5,
+                      height:2,
                       depth: .5,
                       red: 200,
                       green: 200,
@@ -130,4 +54,147 @@ function newLabel(x,y,z) {
 
   // add the entity to the world
   world.add( box );
+}
+
+function dataViz(table) {
+      var arr1 = [];
+      var objArr = [];
+      // var objArr1 = [];
+      var obj;
+      for (var r = 0; r < table.getRowCount(); r++) {
+        arr1.push(table.getRow(r).obj);
+      }
+    
+      for (var i = 0; i < arr1.length; i++) {
+        objArr.push({
+          "name": arr1[i].Team,
+          "ppg": arr1[i].PTS,
+          "blocks": arr1[i].BLK,
+          "threepointattempted": arr1[i].TPA,
+          "steals": arr1[i].STL,
+          "assists": arr1[i].AST,
+          "trb": arr1[i].TRB,
+          "FGA": arr1[i].FGA
+        });
+      }
+      
+      for(var q = 0; q < objArr.length; q++){
+        objArr1.push({
+          "name": objArr[q].name,
+          "points": objArr[q].ppg,
+          "blocks": objArr[q].blocks,
+          "threepointattempted": objArr[q].threepointattempted,
+          "steals": objArr[q].steals,
+          "assists": objArr[q].assists,
+          "trb":objArr[q].trb,
+          "fga":objArr[q].FGA
+        })
+      }
+      
+      
+      //console.log(objArr1);
+}
+
+function drawBarGraph(state){
+        var a = -12;
+        var b = 0;
+        var c = 0;
+          
+        var dataViz = new Box({
+          x: a,
+          y: b,
+          z: -30,
+          width: 3,
+          height: objArr1[state].points,
+          depth: 2,
+          scaleY:.5,
+          red:255, green:26, blue:26,
+          opacity: .9
+        });
+        
+        // world.add(dataViz);
+        
+        var dataViz2 = new Box({
+          x: a + 4,
+          y: b,
+          z: -30,
+          width: 3,
+          height: objArr1[state].blocks,
+          depth: 2,
+          scaleY:2.8,
+          red:255, green:26, blue:26,
+          opacity: .9
+        });
+        
+        // world.add(dataViz2);
+        
+        var dataViz3 = new Box({
+          x: a + 8,
+          y: b,
+          z: -30,
+          width: 3,
+          height: objArr1[state].threepointattempted,
+          depth: 2,
+          scaleY:2,
+          red:255, green:26, blue:26,
+          opacity: .9
+        });
+        
+        // world.add(dataViz3);
+                
+        var dataViz4 = new Box({
+          x: a + 12,
+          y: b,
+          z: -30,
+          width: 3,
+          height: objArr1[state].assists ,
+          depth: 2,
+          scaleY:2,
+          red:255, green:26, blue:26,
+          opacity: .9
+        });
+        
+        var dataViz5 = new Box({
+          x: a + 16,
+          y: b,
+          z: -30,
+          width: 3,
+          height: objArr1[state].steals ,
+          depth: 2,
+          scaleY:2,
+          red:255, green:26, blue:26,
+          opacity: .9
+        });
+        
+        var dataViz6 = new Box({
+          x: a + 20,
+          y: b,
+          z: -30,
+          width: 3,
+          height: objArr1[state].trb ,
+          depth: 2,
+          scaleY:1,
+          red:255, green:26, blue:26,
+          opacity: .9
+        });
+        
+        var dataViz7 = new Box({
+          x: a + 24,
+          y: b,
+          z: -30,
+          width: 3,
+          height: objArr1[state].fga ,
+          depth: 2,
+          scaleY:.5,
+          red:255, green:26, blue:26,
+          opacity: .9
+        });  
+        
+        world.add(dataViz);
+        world.add(dataViz2);
+        world.add(dataViz3);
+        world.add(dataViz4);
+        world.add(dataViz5);
+        world.add(dataViz6);
+        world.add(dataViz7);
 }

@@ -2,10 +2,10 @@ function Zones() {
 
   this.displayZones = function() {
   	
-  	var zone1 = new Plane({
+  	var zone1 = new Circle({
   						x: -18, y:-4.9, z:0,
-  						width: 5, height:5,
-  						red:255, green:255, blue:255,
+  						radius:5,
+  						red:255, green:26, blue:26,
   						opacity: 1,
   						rotationX: -90,
   						side:'double',
@@ -16,10 +16,10 @@ function Zones() {
   					});
   	world.add(zone1);
   	
-  	var zone2 = new Plane({
+  	var zone2 = new Circle({
   						x: -19, y:-4.3, z:15,
-  						width: 5, height:5,
-  						red:255, green:255, blue:255,
+  						radius:5,
+  						red:255, green:26, blue:26,
   						opacity: 1,
   						rotationX: -90,
   						side:'double',
@@ -30,10 +30,10 @@ function Zones() {
   					});
   	world.add(zone2);
   	
-  	var zone3 = new Plane({
+  	var zone3 = new Circle({
   						x: -23, y:-4.3, z:-11,
-  						width: 5, height:5,
-  						red:255, green:255, blue:255,
+  						radius:5,
+  						red:255, green:26, blue:26,
   						opacity: 1,
   						rotationX: -90,
   						side:'double',
@@ -43,6 +43,7 @@ function Zones() {
 			        }
   					});
   	world.add(zone3);
+
   	
   	var homeZone = new Plane({
   						x: -33, y:-4.3, z:-6,

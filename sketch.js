@@ -9,11 +9,27 @@ var ballThrown;
 // array to hold our ball throws
 var ballThrows = [];
 
+var state;
+var scale1;
+var scale2;
+var scale3;
+var scale4;
+var global = [];
+var objArr1 = [];
+
 //loading sounds and data set
 function preload(){
+<<<<<<< Updated upstream
   table = loadTable("data/team_data.csv", "csv", "header");
   
   cheer = loadSound("images/cheer.mp3");
+=======
+  table = loadTable("data/gsw.csv", "csv", "header");
+  table2 = loadTable("data/okc.csv", "csv", "header");
+  table3 = loadTable("data/nyk.csv", "csv", "header");
+  table4 = loadTable("data/cc.csv", "csv", "header");
+  table5 = loadTable("data/team_data.csv", "csv", "header");
+>>>>>>> Stashed changes
 }
 
 function setup() {
@@ -24,11 +40,12 @@ function setup() {
 	world = new World('VRScene');
 	
 	
+	state = 0;
+	
 	container = new Container3D({x:0, y:1, z:-5});
 	world.add(container);
 	
-	theData = new vizData();
-	theData.dataDisplay();
+	
 	
   // create a plane to serve as our "ground"
 	var g = new Plane({
@@ -45,16 +62,16 @@ function setup() {
 	
 	
 	//READING IN THE DATA SET
-	print (table.getRowCount() + "total rows in table");
-	print (table.getColumnCount() + "total columns in table");
-	print(table.getColumn("name"));
+	print (table5.getRowCount() + "total rows in table");
+	print (table5.getColumnCount() + "total columns in table");
+	print(table5.getColumn("name"));
 	
 	
-	for(var r = 0; r < table.getRowCount(); r++){
-	  for(var c =0; c < table.getColumnCount(); c++){
-	    print(table.getString(r,c));
-	  }
-	}
+// 	for(var r = 0; r < table.getRowCount(); r++){
+// 	  for(var c =0; c < table.getColumnCount(); c++){
+// 	    print(table.getString(r,c));
+// 	  }
+// 	}
 	
 	theHoop = new Hoop();
 	theHoop.displayHoop();
@@ -66,7 +83,18 @@ function setup() {
 
 
 function draw() {
+<<<<<<< Updated upstream
   
+=======
+  theData = new vizData(state);
+	theData.dataDisplay();
+
+//	if (mouseIsPressed || touchIsDown) {
+//	world.moveUserForward(0.1);
+//	}
+
+	
+>>>>>>> Stashed changes
 	  // update all ball throw objects
   for (var i = 0; i < ballThrows.length; i++) {
     ballThrows[i].move();
@@ -88,11 +116,22 @@ function keyPressed() {
 
   }
   
+<<<<<<< Updated upstream
   if (key == 'C') {
 	world.moveUserForward(1);
 	}
 
 
+=======
+  if (key == 'Y') {
+    if (state < 5) {
+      state++;
+    } else {
+      state = 0;
+    }
+    console.log("changing state: " + state);
+}
+>>>>>>> Stashed changes
 }
 
 

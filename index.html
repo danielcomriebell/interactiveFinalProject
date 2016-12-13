@@ -73,84 +73,69 @@
 		<a-sky src="#sky" color="rgb(255,255,255)"></a-sky>
 		
 		<!--Load text for labels-->
-	  <!--wins-->
-		<a-text position="-13 6.75 -19.5"
-		        scale="5 4 4"
-            bmfont-text="text: WIN;
-            color: red;">
-    </a-text>
-    
-    <!--losses-->
-    <a-text position="-9 6.75 -19.5"
-		        scale="5 4 4"
-            bmfont-text="text: LOSS;
-            color: red;">
-    </a-text>
-    
-    <!--percentage-->
-    <a-text position="-5 6.75 -19.5"
-		        scale="5 4 4"
-            bmfont-text="text: PCT;
-            color: red;">
-    </a-text>
-    
-    <!--home-->
-    <a-text position="-1 6.75 -19.5"
-		        scale="5 4 4"
-            bmfont-text="text: HOME;
-            color: red;">
-    </a-text>
-    
-    <!--road-->
-    <a-text position="3 6.75 -19.5"
-		        scale="5 4 4"
-            bmfont-text="text: ROAD;
-            color: red;">
-    </a-text>
-    
-    <!--division-->
-    <a-text position="7 6.75 -19.5"
-		        scale="5 4 4"
-            bmfont-text="text: DIV;
-            color: red;">
-    </a-text>
-    
-    <!--conference-->
-    <a-text position="11 6.75 -19.5"
-		        scale="5 4 4"
-            bmfont-text="text: CONF;
-            color: red;">
-    </a-text>
-    
-    <!--points per game-->
-    <a-text position="15 6.75 -19.5"
-		        scale="5 4 4"
+	  <!--points per game-->
+		<a-text position="-13 -4.5 -24.5"
+		        scale="7 9 4"
             bmfont-text="text: PPG;
-            color: red;">
+            color: blue;">
     </a-text>
     
-    <!--opp points per game-->
-    <a-text position="18.5 6.75 -19.5"
-		        scale="4 4 4"
-            bmfont-text="text: OPP PPG;
-            color: red;">
+    <!--blocks-->
+    <a-text position="-9 -4.5 -24.5"
+		        scale="7 9 4"
+            bmfont-text="text: BLK;
+            color: blue;">
     </a-text>
     
-    <!--difference-->
-    <a-text position="23 6.75 -19.5"
-		        scale="5 4 4"
-            bmfont-text="text: DIFF;
-            color: red;">
+    <!--3 point percentage-->
+    <a-text position="-5 -4.5 -24.5"
+		        scale="7 9 4"
+            bmfont-text="text: 3PA;
+            color: blue;">
     </a-text>
     
-    <!--streak-->
-    <a-text position="27 6.75 -19.5"
-		        scale="5 4 4"
-            bmfont-text="text: STRK;
-            color: red;">
+    <!--steals-->
+    <a-text position="-1 -4.5 -24.5"
+		        scale="7 9 4"
+            bmfont-text="text: STL;
+            color: blue;">
+    </a-text>
+    
+    <!--assists-->
+    <a-text position="3 -4.5 -24.5"
+		        scale="7 9 4"
+            bmfont-text="text: AST;
+            color: blue;">
+    </a-text>
+    
+    <!--rebounds-->
+    <a-text position="7 -4.5 -24.5"
+		        scale="7 9 4"
+            bmfont-text="text: TRB;
+            color: blue;">
+    </a-text>
+    
+    <!--field goal attempts-->
+    <a-text position="11 -4.5 -24.5"
+		        scale="7 9 4"
+            bmfont-text="text: FGA;
+            color: blue;">
     </a-text>
 
 	 </a-scene>
+	 
+	  <p>Our final project is a data visualization application with a slight twist. We decided to implement a ball throwing function that mimics the action of shooting a basketball. The application parses through a .csv file of team data, and creates an array of objects with the the teams Points per game, TLB, TLA, 3PA, AST, and BLK. Once it finishes creating the array of objects, our program loops through the objects creating a box to represent that particular data field. In this scenario we decided to show the data by assigning the value of a stat with the height of the box. </p>
+
+<h3>Progress #1:</h3>
+<p>Due to the fact that we didn't really work on VR too much in class, we knew that we would run into some issues. Since we knew the basic foundations of AFRAME, such as creating primitive types and adding textures we decided to set up our initial application. We decided to use basketball data for our application, so we created a basketball hoop out of primitive objects, found an image that would correctly simulate the environment of being in the middle of a basketball court, and then added a hardwood floor texture to the plane. </p>
+
+<h3>Progress #2:</h3>
+<p>Since we already had our initial application set up, we started to think about how we would design the layout of our application. We thought about details such as where the user would start when this VR simulation began, and the interactions the user would have with the data. We decided that the bar graph would be located directly in front of the user once the application loaded, in the format of a bar graph. Once this was decided we started to look into how to parse the .csv file. Luckily P5 has this great method for parsing .csv files so creating an array of objects was easier than it would have been without this library. Now that we were finally seeing a visualization of our statistics we started to think about how we could create a better game. The first idea that came to mind was to create a small mini game in the application. The user can click a square to teleport to the foul line, where they will then click "B" to shoot the basketball. We also wanted to figure out a way to add labels to our bar graph that way the user could easily identity the particular stat they are looking at.</p>
+
+
+<h3>Progress #3:</h3>
+<p>In this data step, we figured out how to teleport to a square that would be where the foul line is on the court. We also figured out how to shoot a basketball on "B". We also found an amazing library for adding labels to VR objects, that helped us allow the user to better identity each statistic. Since we completed what was on our to-do list we started looking into how to parse through the team objects within my object array to dynamically change the data field visualized with a key press. We created a function called showBarGraph which takes in a parameter "state". The state will dynamically change the data set when the user clicks "Y". Once we implemented this function, we realized it was dramatically slowing down our application and utilizing even more of the CPU then the VR application already does. We saw this as an immediate issue and decided to postpone this feature for now. </p>
+
 
 	</body>
 </html>
