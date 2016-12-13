@@ -58,17 +58,17 @@ function setup() {
 	world.add(g);
 	
 	
-	//READING IN THE DATA SET
-	print (table5.getRowCount() + "total rows in table");
-	print (table5.getColumnCount() + "total columns in table");
-	print(table5.getColumn("name"));
+// 	//READING IN THE DATA SET
+// 	print (table5.getRowCount() + "total rows in table");
+// 	print (table5.getColumnCount() + "total columns in table");
+// 	print(table5.getColumn("name"));
 	
 	
-// 	for(var r = 0; r < table.getRowCount(); r++){
-// 	  for(var c =0; c < table.getColumnCount(); c++){
-// 	    print(table.getString(r,c));
-// 	  }
-// 	}
+	for(var r = 0; r < table.getRowCount(); r++){
+	  for(var c =0; c < table.getColumnCount(); c++){
+	    print(table.getString(r,c));
+	  }
+	}
 	
 	theHoop = new Hoop();
 	theHoop.displayHoop();
@@ -196,8 +196,8 @@ function BallThrow() {
   }
   
   this.checkThrow = function() {
-    console.log("x: " + this.cameraCurrentRotationX + " y: " + this.cameraCurrentRotationY + " z: " + this.cameraCurrentRotationZ);
-    console.log("x: " + this.ball.x + " y: " + this.ball.y + " z: " + this.ball.z);
+    // console.log("x: " + this.cameraCurrentRotationX + " y: " + this.cameraCurrentRotationY + " z: " + this.cameraCurrentRotationZ);
+    // console.log("x: " + this.ball.x + " y: " + this.ball.y + " z: " + this.ball.z);
   
     //We can now throw away the ball throw  
     if (this.ball.y < -5) {
