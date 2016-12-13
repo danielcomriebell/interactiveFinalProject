@@ -63,10 +63,6 @@ function setup() {
 
 function draw() {
   
-
-
-
-	
 	  // update all ball throw objects
   for (var i = 0; i < ballThrows.length; i++) {
     ballThrows[i].move();
@@ -134,9 +130,10 @@ function BallThrow() {
   // add the sphere to our container
   this.container.addChild(this.ball);
   
+  //Middle
   if (this.cameraCurrentPositionX === -15) {
-    this.ballVelocityZ = -0.3;
-    this.ballVelocityY = 0.3;
+    this.ballVelocityZ = -0.30;
+    this.ballVelocityY = 0.32;
   }
   
   else if (this.cameraCurrentPositionX === -23) {
@@ -161,17 +158,17 @@ function BallThrow() {
   }
   
   this.checkThrow = function() {
-    //console.log("x: " + this.cameraCurrentRotationX + " y: " + this.cameraCurrentRotationY + " z: " + this.cameraCurrentRotationZ);
-    //console.log("x: " + this.ball.x + " y: " + this.ball.y + " z: " + this.ball.z);
+    console.log("x: " + this.cameraCurrentRotationX + " y: " + this.cameraCurrentRotationY + " z: " + this.cameraCurrentRotationZ);
+    console.log("x: " + this.ball.x + " y: " + this.ball.y + " z: " + this.ball.z);
   
     //We can now throw away the ball throw  
-    if (this.ball.y < -15) {
+    if (this.ball.y < -5) {
     this.ballThrown = true;
     }
     
     //a successful hit from middle
-    if ((this.ball.y < -4 && this.ball.y > -5) && (this.ball.z < -22 && this.ball.z > -23)) {
-      if (this.cameraCurrentRotationX < 7.8 && this.cameraCurrentRotationY < 86 && this.cameraCurrentRotationY > 85) {
+    if ((this.ball.y < -4 && this.ball.y > -5) && (this.ball.z < -22 && this.ball.z > -25)) {
+      if (this.cameraCurrentRotationX < 7.8 && this.cameraCurrentRotationX > 5.8 && this.cameraCurrentRotationY < 87 && this.cameraCurrentRotationY > 85) {
               console.log("success");
       }
       
