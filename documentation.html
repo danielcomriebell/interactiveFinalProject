@@ -1,11 +1,40 @@
+<head>
+  <title>Documentation</title>
+  <style>
+    
+    body {
+      padding: 50px;
+    }
+    
+    img{
+    	margin: 10px;
+    }
+    
+  </style>
+  
+  
+</head> 
+ 
+<body>
+<h1>Basketball Data Visualization</h1>
+
  <p>Our final project is a data visualization application with a slight twist. We decided to implement a ball throwing function that mimics the action of shooting a basketball. The application parses through a .csv file of team data, and creates an array of objects with the the teams Points per game, TLB, TLA, 3PA, AST, and BLK. Once it finishes creating the array of objects, our program loops through the objects creating a box to represent that particular data field. In this scenario we decided to show the data by assigning the value of a stat with the height of the box. </p>
 
-<h3>Progress #1:</h3>
-<p>Due to the fact that we didn't really work on VR too much in class, we knew that we would run into some issues. Since we knew the basic foundations of AFRAME, such as creating primitive types and adding textures we decided to set up our initial application. We decided to use basketball data for our application, so we created a basketball hoop out of primitive objects, found an image that would correctly simulate the environment of being in the middle of a basketball court, and then added a hardwood floor texture to the plane. </p>
-
-<h3>Progress #2:</h3>
-<p>Since we already had our initial application set up, we started to think about how we would design the layout of our application. We thought about details such as where the user would start when this VR simulation began, and the interactions the user would have with the data. We decided that the bar graph would be located directly in front of the user once the application loaded, in the format of a bar graph. Once this was decided we started to look into how to parse the .csv file. Luckily P5 has this great method for parsing .csv files so creating an array of objects was easier than it would have been without this library. Now that we were finally seeing a visualization of our statistics we started to think about how we could create a better game. The first idea that came to mind was to create a small mini game in the application. The user can click a square to teleport to the foul line, where they will then click "B" to shoot the basketball. We also wanted to figure out a way to add labels to our bar graph that way the user could easily identity the particular stat they are looking at.</p>
-
-
-<h3>Progress #3:</h3>
-<p>In this data step, we figured out how to teleport to a square that would be where the foul line is on the court. We also figured out how to shoot a basketball on "B". We also found an amazing library for adding labels to VR objects, that helped us allow the user to better identity each statistic. Since we completed what was on our to-do list we started looking into how to parse through the team objects within my object array to dynamically change the data field visualized with a key press. We created a function called showBarGraph which takes in a parameter "state". The state will dynamically change the data set when the user clicks "Y". Once we implemented this function, we realized it was dramatically slowing down our application and utilizing even more of the CPU then the VR application already does. We saw this as an immediate issue and decided to postpone this feature for now. </p>
+  <h3>Progress #1:</h3>
+  <p>Due to the fact that we didn't really work on VR too much in class, we knew that we would run into some issues. Since we knew the basic foundations of AFRAME, such as creating primitive types and adding textures we decided to set up our initial application. We decided to use basketball data for our application, so we created a basketball hoop out of primitive objects, found an image that would correctly simulate the environment of being in the middle of a basketball court, and then added a hardwood floor texture to the plane. </p>
+  
+  <h3>Progress #2:</h3>
+  <p>Since we already had our initial application set up, we started to think about how we would design the layout of our application. We thought about details such as where the user would start when this VR simulation began, and the interactions the user would have with the data. We decided that the bar graph would be located directly in front of the user once the application loaded, in the format of a bar graph. </p>
+  
+  <h3>Here are a number of mockups that we drew in order to concretize the idea</h3>
+  <img src="Mockups/mockup1.jpg" width="700">
+  <img src="Mockups/mockup2.jpg" width="700">
+  <img src="Mockups/mockup3.jpg" width="700">
+  
+  
+	<p>Once this was decided we started to look into how to parse the .csv file. Luckily P5 has this great method for parsing .csv files so creating an array of objects was easier than it would have been without this library. Now that we were finally seeing a visualization of our statistics we started to think about how we could create a better game. The first idea that came to mind was to create a small mini game in the application. The user can click a square to teleport to the foul line, where they will then click "B" to shoot the basketball. We also wanted to figure out a way to add labels to our bar graph that way the user could easily identity the particular stat they are looking at.</p>
+  
+  
+  <h3>Progress #3:</h3>
+  <p>In this data step, we figured out how to teleport to a square that would be where the foul line is on the court. We also figured out how to shoot a basketball on "B". We also found an amazing library for adding labels to VR objects, that helped us allow the user to better identity each statistic. Since we completed what was on our to-do list we started looking into how to parse through the team objects within my object array to dynamically change the data field visualized with a key press. We created a function called showBarGraph which takes in a parameter "state". The state will dynamically change the data set when the user clicks "Y". Once we implemented this function, we realized it was dramatically slowing down our application and utilizing even more of the CPU then the VR application already does. We saw this as an immediate issue and decided to postpone this feature for now. </p>
+</body>
