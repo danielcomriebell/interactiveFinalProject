@@ -72,7 +72,7 @@ function draw() {
 	  // update all ball throw objects
   for (var i = 0; i < ballThrows.length; i++) {
     ballThrows[i].move();
-    console.log(ballThrows.length);
+    ballThrows[i].checkThrow();
     if (ballThrows[i].ballThrown) {
        ballThrows.splice(i, 1);
        i--;
@@ -86,7 +86,7 @@ function keyPressed() {
   if (key == 'B') {
     // add a new ball throw
     ballThrows.push( new BallThrow() );
-    console.log(ballThrows.length)
+    console.log(ballThrows)
 
   }
 }
@@ -126,7 +126,7 @@ function BallThrow() {
     radius:0.5,
     asset: 'ball',
     ballThrown: false
-  });
+    });
   // add the sphere to our container
   this.container.addChild(this.ball);
   
@@ -153,8 +153,20 @@ function BallThrow() {
     
     // update Y velocity to simulate gravity
     this.ballVelocityY -= 0.01;
-    this.ballThrown = true;
-
+    
+    if (this.ball.y < -30) {
+      this.ballThrown = true;
+    }
+    
+    if ((this.ball.y < -4) && (this.ball.z < -22)) {
+      console.log("success");
+    }
+  }
+  
+  this.checkThrow = function() {
+  //  console.log("x: " + this.ball.x + " y: " + this.ball.y + " z: " + this.ball.z);
+   // console.log("x: " + this.ball.x + " y: " + this.ball.y + " z: " + this.ball.z);
+    
   }
 }
 
