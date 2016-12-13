@@ -3,6 +3,8 @@ var theData;
 var theHoop;
 var zones;
 
+var ballThrown;
+
 // array to hold our ball throws
 var ballThrows = [];
 
@@ -70,7 +72,13 @@ function draw() {
 	  // update all ball throw objects
   for (var i = 0; i < ballThrows.length; i++) {
     ballThrows[i].move();
+    console.log(ballThrows.length);
+    if (ballThrows[i].ballThrown) {
+       ballThrows.splice(i, 1);
+       i--;
+     }
   }
+
 }
 
 function keyPressed() {
@@ -78,6 +86,8 @@ function keyPressed() {
   if (key == 'B') {
     // add a new ball throw
     ballThrows.push( new BallThrow() );
+    console.log(ballThrows.length)
+
   }
 }
 
@@ -114,25 +124,25 @@ function BallThrow() {
     y:0,
     z:-1,
     radius:0.5,
-    asset: 'ball'
+    asset: 'ball',
+    ballThrown: false
   });
   // add the sphere to our container
   this.container.addChild(this.ball);
   
   if (this.cameraCurrentPositionX === -15) {
-    // give the sphere some forward velocity (z)
     this.ballVelocityZ = -0.3;
-  
-    // give the sphere some upward velocity (y)
     this.ballVelocityY = 0.3;
   }
   
   else if (this.cameraCurrentPositionX === -23) {
-    // give the sphere some forward velocity (z)
-    this.ballVelocityZ = -9;
+    this.ballVelocityZ = -0.3;
+    this.ballVelocityY = 0.3;
+  }
   
-    // give the sphere some upward velocity (y)
-    this.ballVelocityY = 0.9;
+  else if (this.cameraCurrentPositionX === -19) {
+    this.ballVelocityZ = -.35;
+    this.ballVelocityY = 0.35;
   }
 
   
@@ -143,6 +153,8 @@ function BallThrow() {
     
     // update Y velocity to simulate gravity
     this.ballVelocityY -= 0.01;
+    this.ballThrown = true;
+
   }
 }
 
