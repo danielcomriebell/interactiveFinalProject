@@ -2,6 +2,7 @@ var world;
 var theData;
 var theHoop;
 var zones;
+var cheer; 
 
 var ballThrown;
 
@@ -11,14 +12,17 @@ var ballThrows = [];
 //loading sounds and data set
 function preload(){
   table = loadTable("data/team_data.csv", "csv", "header");
+  
+  cheer = loadSound("images/cheer.mp3");
 }
 
 function setup() {
+  
 	noCanvas();
 	// construct the A-Frame world
 	// this function requires a reference to the ID of the 'a-scene' tag in our HTML document
 	world = new World('VRScene');
-	 
+	
 	
 	container = new Container3D({x:0, y:1, z:-5});
 	world.add(container);
@@ -170,15 +174,18 @@ function BallThrow() {
     if ((this.ball.y < -4 && this.ball.y > -5) && (this.ball.z < -22 && this.ball.z > -25)) {
       if (this.cameraCurrentRotationX < 7.8 && this.cameraCurrentRotationX > 5.8 && this.cameraCurrentRotationY < 87 && this.cameraCurrentRotationY > 85) {
               console.log("success");
+              cheer.play();
       }
       
     //from right
      else if (this.cameraCurrentRotationX < 9.8 && this.cameraCurrentRotationX > 9 && this.cameraCurrentRotationY < 109 && this.cameraCurrentRotationY > 103) {
               console.log("success");
+              cheer.play();
       }
       
       else if (this.cameraCurrentRotationX < 9 && this.cameraCurrentRotationX > 7 && this.cameraCurrentRotationY < 66 && this.cameraCurrentRotationY > 61) {
           console.log("success");
+          cheer.play();
       }
     }
     
